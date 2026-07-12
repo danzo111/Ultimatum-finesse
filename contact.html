@@ -7,16 +7,21 @@
 <title>Contact | Ultimatum Finesse</title>
 <meta name="description" content="Get in touch with Ultimatum Finesse for GIS, LiDAR, 3D scanning, BIM, photogrammetry and survey services in Botswana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://unpkg.com">
+<link rel="preconnect" href="https://server.arcgisonline.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
+
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
-      <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
+      <span class="brand-logo-badge"><img src="assets/logo-full.jpg" width="1200" height="335" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
     </a>
     <nav class="main-nav">
       <ul>
@@ -35,11 +40,13 @@
   </div>
 </header>
 
+<main id="main">
+
 <section class="page-hero">
   <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
-    <h1>Let's talk about your site</h1>
-    <p>Tell us what you need mapped, scanned or surveyed. We'll reply with the right approach and a clear estimate.</p>
+    <h1>Let’s talk about your site</h1>
+    <p>Tell us what you need mapped, scanned or surveyed. We’ll reply with the right approach and a clear estimate.</p>
   </div>
 </section>
 
@@ -74,7 +81,7 @@
       </div>
 
       <div class="reveal">
-        <div id="form-success" class="form-success">
+        <div id="form-success" class="form-success" role="status" aria-live="polite">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
           Thank you. Your message has been noted. This form is not yet connected to email, so please also reach us directly using the details alongside.
         </div>
@@ -82,21 +89,21 @@
           <div class="form-row-2">
             <div class="form-field">
               <label for="name">Full Name</label>
-              <input id="name" type="text" placeholder="Your name" required>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name…" required>
             </div>
             <div class="form-field">
               <label for="email">Email</label>
-              <input id="email" type="email" placeholder="you@company.com" required>
+              <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" placeholder="you@company.com" required>
             </div>
           </div>
           <div class="form-row-2">
             <div class="form-field">
               <label for="phone">Phone</label>
-              <input id="phone" type="tel" placeholder="+267 ...">
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+267…">
             </div>
             <div class="form-field">
               <label for="service">Service Needed</label>
-              <select id="service">
+              <select id="service" name="service">
                 <option>GIS Applications</option>
                 <option>Aerial &amp; Mobile LiDAR</option>
                 <option>3D Laser Scanning</option>
@@ -109,7 +116,7 @@
           </div>
           <div class="form-field">
             <label for="message">Project Details</label>
-            <textarea id="message" rows="5" placeholder="Tell us about the site, scale and timeline" required></textarea>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about the site, scale and timeline…" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Send Message</button>
           <p class="form-note">This form is not yet connected to a mail service. Please contact us directly using the details on this page.</p>
@@ -129,12 +136,14 @@
   </div>
 </section>
 
+</main>
+
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand" style="margin-bottom:16px;">
-          <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
+          <span class="brand-logo-badge"><img src="assets/logo-full.jpg" width="1200" height="335" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
         </a>
         <p>We provide geospatial knowledge suited to your needs: GIS, LiDAR, laser scanning, BIM, photogrammetry and survey services across Botswana.</p>
       </div>

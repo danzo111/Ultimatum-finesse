@@ -63,7 +63,24 @@ a:focus-visible, button:focus-visible {
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+
+.skip-link {
+  position: absolute;
+  top: -100px;
+  left: 16px;
+  z-index: 2000;
+  background: var(--emerald-500);
+  color: var(--navy-950);
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 12px 20px;
+  border-radius: 8px;
+  transition: top 0.2s ease;
+}
+.skip-link:focus { top: 16px; }
+html { scroll-behavior: smooth; -webkit-tap-highlight-color: rgba(129, 173, 28, 0.25); }
+h1, h2, h3, h4 { text-wrap: balance; }
+[id] { scroll-margin-top: 110px; }
 
 body {
   margin: 0;
@@ -146,8 +163,9 @@ button { font-family: inherit; cursor: pointer; }
   letter-spacing: 0.6px;
   text-transform: uppercase;
   border: 2px solid transparent;
-  transition: all 0.25s ease;
+  transition: background-color 0.25s ease, border-color 0.25s ease, color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
   white-space: nowrap;
+  touch-action: manipulation;
 }
 .btn-primary {
   background: var(--emerald-500);
@@ -165,6 +183,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .btn-dark:hover { background: var(--navy-900); color: var(--white); }
 .btn-block { width: 100%; justify-content: center; }
+.btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 .btn svg { width: 18px; height: 18px; }
 
 /* ============ HEADER ============ */
@@ -175,7 +194,7 @@ button { font-family: inherit; cursor: pointer; }
   right: 0;
   z-index: 1000;
   padding: 22px 0;
-  transition: all 0.3s ease;
+  transition: background-color 0.3s ease, padding 0.3s ease, box-shadow 0.3s ease;
 }
 .site-header.is-scrolled {
   background: rgba(20, 35, 11, 0.92);
@@ -709,7 +728,8 @@ button { font-family: inherit; cursor: pointer; }
   font-weight: 600;
   font-size: 13.5px;
   color: var(--slate-700);
-  transition: all 0.2s ease;
+  transition: border-color 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+  touch-action: manipulation;
 }
 .map-filter:hover { border-color: var(--emerald-400); color: var(--navy-900); }
 .map-filter.active {
@@ -916,9 +936,12 @@ button { font-family: inherit; cursor: pointer; }
   transition: border-color 0.2s, background 0.2s;
 }
 .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
-  outline: none;
   border-color: var(--emerald-400);
   background: var(--white);
+}
+.form-field input:focus-visible, .form-field textarea:focus-visible, .form-field select:focus-visible {
+  outline: 2px solid var(--emerald-400);
+  outline-offset: 1px;
 }
 .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .form-note { font-size: 12.5px; color: var(--slate-500); margin-top: 10px; }
@@ -1017,7 +1040,8 @@ button { font-family: inherit; cursor: pointer; }
 @media (max-width: 760px) {
   .main-nav { position: fixed; top: 0; right: 0; height: 100vh; width: 78%; max-width: 320px;
     background: var(--navy-950); padding: 110px 32px 32px; transform: translateX(100%);
-    transition: transform 0.3s ease; box-shadow: -12px 0 40px rgba(0,0,0,0.3); }
+    transition: transform 0.3s ease; box-shadow: -12px 0 40px rgba(0,0,0,0.3);
+    overflow-y: auto; overscroll-behavior: contain; }
   .main-nav.is-open { transform: translateX(0); }
   .main-nav ul { flex-direction: column; align-items: flex-start; gap: 4px; width: 100%; }
   .main-nav a { display: block; width: 100%; padding: 14px 10px; }

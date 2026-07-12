@@ -1,5 +1,5 @@
 // Interactive Leaflet map of Ultimatum Finesse project sites across Botswana.
-// Free OpenStreetMap/CARTO tiles — no API key required.
+// Free Esri World Imagery satellite tiles, no API key required.
 // Projects sourced from the Ultimatum Finesse Company Profile 2026 and current
 // works advised by the company; pin locations are approximate (town/site level).
 

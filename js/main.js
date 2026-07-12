@@ -13,17 +13,32 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", onScroll, { passive: true });
 
   if (toggle && nav) {
+    if (!nav.id) nav.id = "main-nav";
+    toggle.setAttribute("aria-controls", nav.id);
+    toggle.setAttribute("aria-expanded", "false");
+    const closeNav = () => {
+      toggle.classList.remove("is-open");
+      nav.classList.remove("is-open");
+      toggle.setAttribute("aria-expanded", "false");
+    };
     toggle.addEventListener("click", () => {
-      toggle.classList.toggle("is-open");
-      nav.classList.toggle("is-open");
+      const isOpen = toggle.classList.toggle("is-open");
+      nav.classList.toggle("is-open", isOpen);
+      toggle.setAttribute("aria-expanded", String(isOpen));
     });
     nav.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        toggle.classList.remove("is-open");
-        nav.classList.remove("is-open");
-      });
+      link.addEventListener("click", closeNav);
+    });
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") closeNav();
     });
   }
+
+  // Decorative icons: every inline SVG on this site accompanies text or sits
+  // inside an aria-labelled control, so none carry unique meaning on their own.
+  document.querySelectorAll("svg:not([aria-hidden]):not([role])").forEach((svg) => {
+    svg.setAttribute("aria-hidden", "true");
+  });
 
   // Scroll reveal
   const revealEls = document.querySelectorAll(".reveal");
@@ -78,13 +93,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Demo contact form (front-end only — no backend in this design concept)
+  // Contact form is front-end only for now; no backend is wired up yet.
   const form = document.querySelector("#contact-form");
   if (form) {
     form.addEventListener("submit", (e) => {
       e.preventDefault();
-      document.querySelector("#form-success")?.classList.add("show");
-      form.reset();
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalLabel = submitBtn?.textContent;
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+      setTimeout(() => {
+        document.querySelector("#form-success")?.classList.add("show");
+        form.reset();
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalLabel;
+        }
+      }, 500);
     });
   }
 
