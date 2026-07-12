@@ -499,6 +499,10 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--slate-100);
 }
 .service-detail-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Portrait-orientation service photos (survey tripod, drone operator): give them a
+   taller, portrait-friendly frame and a focal point so the subject isn't cropped. */
+.service-detail-photo.is-portrait { height: 260px; }
+.service-detail-photo.is-portrait img { object-position: center 45%; }
 .service-detail h3 { font-size: 26px; margin-bottom: 8px; }
 .service-detail .index-no {
   font-family: var(--font-display);
@@ -572,31 +576,68 @@ button { font-family: inherit; cursor: pointer; }
   pointer-events: auto;
   transform: translateX(-50%) translateY(0);
 }
-.client-logos {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+/* Auto-scrolling "trusted by" logo marquee */
+.logo-marquee {
+  overflow: hidden;
+  width: 100%;
+  -webkit-mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
+  mask-image: linear-gradient(90deg, transparent, black 6%, black 94%, transparent);
 }
-.client-logo-card {
-  height: 110px;
+.logo-track {
+  display: flex;
+  width: max-content;
+  animation: logo-scroll 32s linear infinite;
+}
+.logo-marquee:hover .logo-track,
+.logo-marquee:focus-within .logo-track {
+  animation-play-state: paused;
+}
+.logo-track-group {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+  padding-right: 20px;
+}
+@keyframes logo-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-track { animation: none; }
+}
+.logo-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  width: 230px;
+  height: 160px;
+  flex-shrink: 0;
   background: var(--white);
   border: 1px solid var(--slate-100);
   border-radius: var(--radius);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 20px 24px;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  padding: 22px 24px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
-.client-logo-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: transparent; }
-.client-logo-card img {
+.logo-slide:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: transparent;
+}
+.logo-slide img {
   max-width: 100%;
-  max-height: 100%;
+  max-height: 60px;
   object-fit: contain;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter 0.25s ease;
 }
-.client-logo-card:hover img { filter: grayscale(0) opacity(1); }
+.logo-slide-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 13.5px;
+  letter-spacing: 0.3px;
+  color: var(--slate-700);
+  text-align: center;
+}
 
 /* ============ REAL PHOTOGRAPHY ============ */
 .photo-frame {
@@ -934,7 +975,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .cta-band h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 8px; }
 .cta-band p { color: var(--slate-300); margin: 0; }
-.cta-band-actions { display: flex; gap: 14px; position: relative; z-index: 1; }
+.cta-band-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; position: relative; z-index: 1; }
 
 /* ============ CONTACT ============ */
 .contact-grid {
@@ -1079,6 +1120,14 @@ button { font-family: inherit; cursor: pointer; }
   .article-featured { grid-template-columns: 1fr; }
   .service-detail { grid-template-columns: 90px 1fr; }
   .service-detail-photo { grid-column: 1 / -1; order: 3; }
+  /* Full-width stacked row here is much wider than the portrait crop is tall;
+     cap the width so cover doesn't crush the subject out of frame. */
+  .service-detail-photo.is-portrait {
+    height: 340px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .about-photo-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -1092,10 +1141,20 @@ button { font-family: inherit; cursor: pointer; }
   .main-nav a { display: block; width: 100%; padding: 14px 10px; }
   .header-actions .btn-primary { display: none; }
   .nav-toggle { display: block; }
+  /* Larger, more prominent brand lockup at the top on mobile */
+  .brand-logo-badge { padding: 8px 14px; }
+  .brand-logo-badge img { height: 48px; }
   .services-grid, .articles-grid { grid-template-columns: 1fr; }
   .service-detail { grid-template-columns: 1fr; }
+  /* Portrait photos need a taller, width-capped frame on full-width mobile rows */
+  .service-detail-photo.is-portrait {
+    height: 360px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .cta-band { flex-direction: column; text-align: center; padding: 44px 28px; }
-  .cta-band-actions { justify-content: center; }
+  .cta-band-actions { justify-content: center; width: 100%; }
   .form-row-2 { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; gap: 32px; }
   .section { padding: 64px 0; }
