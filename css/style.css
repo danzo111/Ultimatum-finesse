@@ -4,29 +4,32 @@
    ============================================================ */
 
 :root {
-  --navy-950: #060d1a;
-  --navy-900: #0a1628;
-  --navy-800: #0f2038;
-  --navy-700: #16304f;
-  --navy-600: #1f3f66;
-  --emerald-500: #17b892;
-  --emerald-400: #2dd4a7;
-  --emerald-300: #6ee8c5;
-  --amber-500: #f5a524;
-  --amber-400: #ffbb45;
-  --slate-50: #f7f9fb;
-  --slate-100: #eef1f5;
-  --slate-300: #c3cbd6;
-  --slate-500: #7d8aa0;
-  --slate-700: #45526a;
+  /* Brand palette: greens sampled from the Ultimatum Finesse logo
+     (#81ad1c / #9fc22a / #b0d932) on a white base. Token names kept
+     from the first iteration so components don't need re-wiring. */
+  --navy-950: #0b1405;
+  --navy-900: #14230b;
+  --navy-800: #1c3110;
+  --navy-700: #294618;
+  --navy-600: #375c21;
+  --emerald-500: #729c15;
+  --emerald-400: #9fc22a;
+  --emerald-300: #cfe873;
+  --amber-500: #81ad1c;
+  --amber-400: #b0d932;
+  --slate-50: #f6f9f0;
+  --slate-100: #eaefe0;
+  --slate-300: #c7cfba;
+  --slate-500: #7e8a6e;
+  --slate-700: #46523a;
   --white: #ffffff;
 
   --font-display: "Rajdhani", sans-serif;
   --font-body: "Inter", sans-serif;
 
-  --shadow-sm: 0 2px 8px rgba(6, 13, 26, 0.08);
-  --shadow-md: 0 8px 30px rgba(6, 13, 26, 0.12);
-  --shadow-lg: 0 20px 60px rgba(6, 13, 26, 0.22);
+  --shadow-sm: 0 2px 8px rgba(11, 20, 5, 0.08);
+  --shadow-md: 0 8px 30px rgba(11, 20, 5, 0.12);
+  --shadow-lg: 0 20px 60px rgba(11, 20, 5, 0.22);
 
   --radius: 14px;
   --container: 1180px;
@@ -148,7 +151,7 @@ button { font-family: inherit; cursor: pointer; }
   transition: all 0.3s ease;
 }
 .site-header.is-scrolled {
-  background: rgba(10, 22, 40, 0.92);
+  background: rgba(20, 35, 11, 0.92);
   backdrop-filter: blur(10px);
   padding: 14px 0;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
@@ -241,8 +244,8 @@ button { font-family: inherit; cursor: pointer; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at 82% 18%, rgba(23,184,146,0.22), transparent 45%),
-              radial-gradient(circle at 8% 90%, rgba(245,165,36,0.14), transparent 40%),
+  background: radial-gradient(circle at 82% 18%, rgba(159,194,42,0.22), transparent 45%),
+              radial-gradient(circle at 8% 90%, rgba(176,217,50,0.12), transparent 40%),
               linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
   color: var(--white);
   overflow: hidden;
@@ -298,7 +301,7 @@ button { font-family: inherit; cursor: pointer; }
   top: 16px;
   left: 16px;
   z-index: 500;
-  background: rgba(6,13,26,0.78);
+  background: rgba(11,20,5,0.78);
   backdrop-filter: blur(6px);
   color: var(--white);
   font-family: var(--font-display);
@@ -314,13 +317,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 .pulse-dot {
   width: 8px; height: 8px; border-radius: 50%; background: var(--emerald-400);
-  box-shadow: 0 0 0 0 rgba(45,212,167,0.7);
+  box-shadow: 0 0 0 0 rgba(176,217,50,0.7);
   animation: pulse 1.8s infinite;
 }
 @keyframes pulse {
-  0% { box-shadow: 0 0 0 0 rgba(45,212,167,0.6); }
-  70% { box-shadow: 0 0 0 10px rgba(45,212,167,0); }
-  100% { box-shadow: 0 0 0 0 rgba(45,212,167,0); }
+  0% { box-shadow: 0 0 0 0 rgba(176,217,50,0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(176,217,50,0); }
+  100% { box-shadow: 0 0 0 0 rgba(176,217,50,0); }
 }
 
 /* ============ STATS ============ */
@@ -501,7 +504,7 @@ button { font-family: inherit; cursor: pointer; }
   position: absolute;
   left: 0; right: 0; bottom: 0;
   padding: 14px 18px;
-  background: linear-gradient(0deg, rgba(6,13,26,0.85), transparent);
+  background: linear-gradient(0deg, rgba(11,20,5,0.85), transparent);
   color: var(--white);
   font-size: 12.5px;
   font-weight: 600;
@@ -777,7 +780,7 @@ button { font-family: inherit; cursor: pointer; }
   right: -60px; top: -60px;
   width: 260px; height: 260px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(45,212,167,0.28), transparent 70%);
+  background: radial-gradient(circle, rgba(159,194,42,0.28), transparent 70%);
 }
 .cta-band h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 8px; }
 .cta-band p { color: var(--slate-300); margin: 0; }
@@ -838,8 +841,8 @@ button { font-family: inherit; cursor: pointer; }
   display: none;
   align-items: center;
   gap: 10px;
-  background: rgba(23,184,146,0.1);
-  border: 1px solid rgba(23,184,146,0.35);
+  background: rgba(129,173,28,0.1);
+  border: 1px solid rgba(129,173,28,0.35);
   color: var(--emerald-500);
   padding: 14px 18px;
   border-radius: 10px;
