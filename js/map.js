@@ -156,9 +156,12 @@ function initUfMap(elId, options = {}) {
     attributionControl: options.interactive !== false,
   }).setView(options.center || [-22.5, 25.0], options.zoom || 5.6);
 
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: "abcd",
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+    attribution: "Tiles &copy; Esri",
+    maxZoom: 19,
+  }).addTo(map);
+
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", {
     maxZoom: 19,
   }).addTo(map);
 

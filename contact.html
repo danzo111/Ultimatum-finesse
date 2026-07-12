@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="icon" href="assets/logo-mark.jpg" type="image/jpeg">
-<title>Contact — Ultimatum Finesse</title>
+<title>Contact | Ultimatum Finesse</title>
 <meta name="description" content="Get in touch with Ultimatum Finesse for GIS, LiDAR, 3D scanning, BIM, photogrammetry and survey services in Botswana.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -16,7 +16,7 @@
 <header class="site-header">
   <div class="container">
     <a href="index.html" class="brand">
-      <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse — Providing Geospatial Knowledge"></span>
+      <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
     </a>
     <nav class="main-nav">
       <ul>
@@ -39,7 +39,7 @@
   <div class="container">
     <div class="breadcrumb"><a href="index.html">Home</a> / Contact</div>
     <h1>Let's talk about your site</h1>
-    <p>Tell us what you need mapped, scanned or surveyed — we'll get back to you with the right approach and a clear estimate.</p>
+    <p>Tell us what you need mapped, scanned or surveyed. We'll reply with the right approach and a clear estimate.</p>
   </div>
 </section>
 
@@ -76,7 +76,7 @@
       <div class="reveal">
         <div id="form-success" class="form-success">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          Thanks — your message has been noted. This is a design demo, so no email is actually sent.
+          Thank you. Your message has been noted. This form is not yet connected to email, so please also reach us directly using the details alongside.
         </div>
         <form id="contact-form">
           <div class="form-row-2">
@@ -112,7 +112,7 @@
             <textarea id="message" rows="5" placeholder="Tell us about the site, scale and timeline" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-          <p class="form-note">This is a front-end design concept — the form does not send data anywhere.</p>
+          <p class="form-note">This form is not yet connected to a mail service. Please contact us directly using the details on this page.</p>
         </form>
       </div>
     </div>
@@ -134,9 +134,9 @@
     <div class="footer-grid">
       <div class="footer-brand">
         <a href="index.html" class="brand" style="margin-bottom:16px;">
-          <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse — Providing Geospatial Knowledge"></span>
+          <span class="brand-logo-badge"><img src="assets/logo-full.jpg" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
         </a>
-        <p>Providing geospatial knowledge suited to your needs — GIS, LiDAR, laser scanning, BIM, photogrammetry and survey services across Botswana.</p>
+        <p>We provide geospatial knowledge suited to your needs: GIS, LiDAR, laser scanning, BIM, photogrammetry and survey services across Botswana.</p>
       </div>
       <div class="footer-col">
         <h4>Company</h4>
@@ -169,7 +169,7 @@
     </div>
     <div class="footer-bottom">
       <span>&copy; 2026 Ultimatum Finesse. All rights reserved.</span>
-      <span>Redesign concept by Daniel Njoroge — GIS &amp; Web Portfolio Demo</span>
+      <span>Site designed and built by Daniel Kimani Njoroge</span>
     </div>
   </div>
 </footer>
@@ -179,9 +179,11 @@
 <script src="js/main.js"></script>
 <script>
   const officeMap = L.map("contact-map").setView([-24.663, 25.906], 14);
-  L.tileLayer("https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png", {
-    attribution: '&copy; OpenStreetMap contributors &copy; CARTO',
-    subdomains: "abcd",
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+    attribution: "Tiles &copy; Esri",
+    maxZoom: 19,
+  }).addTo(officeMap);
+  L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}", {
     maxZoom: 19,
   }).addTo(officeMap);
   L.marker([-24.663, 25.906], { icon: ufMarkerIcon("#81ad1c") })
