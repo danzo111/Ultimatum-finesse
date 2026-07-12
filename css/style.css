@@ -1083,6 +1083,14 @@ button { font-family: inherit; cursor: pointer; }
   .article-featured { grid-template-columns: 1fr; }
   .service-detail { grid-template-columns: 90px 1fr; }
   .service-detail-photo { grid-column: 1 / -1; order: 3; }
+  /* Full-width stacked row here is much wider than the portrait crop is tall;
+     cap the width so cover doesn't crush the subject out of frame. */
+  .service-detail-photo.is-portrait {
+    height: 340px;
+    max-width: 280px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .about-photo-grid { grid-template-columns: 1fr 1fr; }
 }
 
@@ -1111,4 +1119,18 @@ button { font-family: inherit; cursor: pointer; }
   .cta-band { flex-direction: column; text-align: center; padding: 44px 28px; }
   .cta-band-actions { justify-content: center; width: 100%; }
   .form-row-2 { grid-template-columns: 1fr; }
-  .fo
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .section { padding: 64px 0; }
+  .chip-tooltip { width: 200px; }
+  .client-logos { grid-template-columns: repeat(2, 1fr); }
+  .gallery-grid { grid-template-columns: 1fr 1fr; }
+  .about-photo-grid { grid-template-columns: 1fr; }
+  .about-photo-grid .photo-frame:first-child { min-height: 220px; }
+  .about-media { grid-template-columns: 1fr; }
+  .value-row { grid-template-columns: 1fr; gap: 4px; }
+  .process-strip { flex-direction: column; align-items: stretch; }
+  .process-step { width: 100%; }
+  .partner-stories-grid { grid-template-columns: 1fr; }
+  .partner-story-card { flex-direction: column; }
+  .partner-story-logo { width: 64px; height: 64px; }
+}
