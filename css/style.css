@@ -499,6 +499,10 @@ button { font-family: inherit; cursor: pointer; }
   border: 1px solid var(--slate-100);
 }
 .service-detail-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Portrait-orientation service photos (survey tripod, drone operator): give them a
+   taller, portrait-friendly frame and a focal point so the subject isn't cropped. */
+.service-detail-photo.is-portrait { height: 260px; }
+.service-detail-photo.is-portrait img { object-position: center 45%; }
 .service-detail h3 { font-size: 26px; margin-bottom: 8px; }
 .service-detail .index-no {
   font-family: var(--font-display);
@@ -934,7 +938,7 @@ button { font-family: inherit; cursor: pointer; }
 }
 .cta-band h2 { font-size: clamp(26px, 3vw, 36px); margin-bottom: 8px; }
 .cta-band p { color: var(--slate-300); margin: 0; }
-.cta-band-actions { display: flex; gap: 14px; position: relative; z-index: 1; }
+.cta-band-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; position: relative; z-index: 1; }
 
 /* ============ CONTACT ============ */
 .contact-grid {
@@ -1092,23 +1096,19 @@ button { font-family: inherit; cursor: pointer; }
   .main-nav a { display: block; width: 100%; padding: 14px 10px; }
   .header-actions .btn-primary { display: none; }
   .nav-toggle { display: block; }
+  /* Larger, more prominent brand lockup at the top on mobile */
+  .brand-logo-badge { padding: 8px 14px; }
+  .brand-logo-badge img { height: 48px; }
   .services-grid, .articles-grid { grid-template-columns: 1fr; }
   .service-detail { grid-template-columns: 1fr; }
+  /* Portrait photos need a taller, width-capped frame on full-width mobile rows */
+  .service-detail-photo.is-portrait {
+    height: 360px;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+  }
   .cta-band { flex-direction: column; text-align: center; padding: 44px 28px; }
-  .cta-band-actions { justify-content: center; }
+  .cta-band-actions { justify-content: center; width: 100%; }
   .form-row-2 { grid-template-columns: 1fr; }
-  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-  .section { padding: 64px 0; }
-  .chip-tooltip { width: 200px; }
-  .client-logos { grid-template-columns: repeat(2, 1fr); }
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .about-photo-grid { grid-template-columns: 1fr; }
-  .about-photo-grid .photo-frame:first-child { min-height: 220px; }
-  .about-media { grid-template-columns: 1fr; }
-  .value-row { grid-template-columns: 1fr; gap: 4px; }
-  .process-strip { flex-direction: column; align-items: stretch; }
-  .process-step { width: 100%; }
-  .partner-stories-grid { grid-template-columns: 1fr; }
-  .partner-story-card { flex-direction: column; }
-  .partner-story-logo { width: 64px; height: 64px; }
-}
+  .fo
