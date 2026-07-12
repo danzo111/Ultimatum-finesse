@@ -1,0 +1,299 @@
+<!doctype html>
+<title>Ultimatum Finesse — What Changed</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  :root {
+    --navy-950: #0b1405;
+    --navy-900: #14230b;
+    --navy-800: #1c3110;
+    --navy-700: #294618;
+    --emerald-500: #729c15;
+    --emerald-400: #9fc22a;
+    --amber-500: #81ad1c;
+    --slate-50: #f6f9f0;
+    --slate-100: #eaefe0;
+    --slate-300: #c7cfba;
+    --slate-500: #7d8a6e;
+    --slate-700: #45523a;
+    --white: #ffffff;
+    --ink: #14230b;
+    --old-red: #b3453a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    color: var(--ink);
+    background: var(--slate-50);
+    line-height: 1.6;
+  }
+  h1, h2, h3, h4 {
+    font-family: Georgia, "Times New Roman", serif;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.15;
+    color: var(--navy-950);
+    text-wrap: balance;
+  }
+  .wrap { max-width: 860px; margin: 0 auto; padding: 0 24px 96px; }
+  .container { max-width: 100%; overflow-x: auto; }
+
+  /* Masthead */
+  .masthead {
+    background: linear-gradient(160deg, var(--navy-950), var(--navy-800));
+    color: var(--white);
+    padding: 72px 24px 56px;
+  }
+  .masthead-inner { max-width: 860px; margin: 0 auto; }
+  .eyebrow {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--emerald-400); margin-bottom: 18px;
+  }
+  .eyebrow::before { content: ""; width: 24px; height: 2px; background: var(--amber-500); display: inline-block; }
+  .masthead h1 { color: var(--white); font-size: clamp(30px, 4.5vw, 44px); margin: 0 0 14px; }
+  .masthead p.lede { color: var(--slate-300); font-size: 17px; max-width: 620px; margin: 0 0 28px; }
+  .link-row { display: flex; flex-wrap: wrap; gap: 12px; }
+  .link-row a {
+    font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    font-weight: 700; font-size: 13.5px; letter-spacing: 0.3px;
+    padding: 11px 20px; border-radius: 999px; text-decoration: none;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .link-row a.primary { background: var(--emerald-500); color: var(--navy-950); }
+  .link-row a.ghost { border: 1.5px solid rgba(255,255,255,0.3); color: var(--white); }
+  .meta-line { color: var(--slate-500); font-size: 13px; margin-top: 26px; }
+
+  /* Sections */
+  section { padding: 56px 0; border-bottom: 1px solid var(--slate-100); }
+  section:last-of-type { border-bottom: none; }
+  .section-label {
+    font-size: 12px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase;
+    color: var(--emerald-500); margin-bottom: 10px;
+  }
+  section h2 { font-size: 26px; margin: 0 0 12px; }
+  section > p.intro { max-width: 640px; color: var(--slate-700); font-size: 15.5px; }
+
+  /* Comparison table */
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; margin-top: 28px; }
+  caption { caption-side: top; text-align: left; font-weight: 700; margin-bottom: 8px; }
+  th, td { text-align: left; padding: 13px 14px; vertical-align: top; border-bottom: 1px solid var(--slate-100); }
+  thead th { font-size: 11.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--slate-500); border-bottom: 2px solid var(--slate-100); }
+  tbody th { font-weight: 700; width: 27%; color: var(--navy-900); }
+  td.old { color: var(--old-red); }
+  td.new { color: var(--navy-700); font-weight: 600; }
+  td.old::before { content: "Before: "; font-weight: 700; opacity: 0.001; position: absolute; width: 1px; height: 1px; overflow: hidden; }
+  .tag-old, .tag-new {
+    display: inline-block; font-size: 10.5px; font-weight: 700; letter-spacing: 0.5px; text-transform: uppercase;
+    padding: 2px 8px; border-radius: 999px; margin-bottom: 5px;
+  }
+  .tag-old { background: rgba(179,69,58,0.1); color: var(--old-red); }
+  .tag-new { background: rgba(114,156,21,0.14); color: var(--emerald-500); }
+
+  /* Feature cards */
+  .feature {
+    display: grid; grid-template-columns: 48px 1fr; gap: 18px;
+    padding: 26px 0; border-top: 1px solid var(--slate-100);
+  }
+  .feature:first-of-type { border-top: none; padding-top: 8px; }
+  .feature-num {
+    font-family: Georgia, serif; font-weight: 700; font-size: 20px; color: var(--slate-300);
+  }
+  .feature h3 { font-size: 18.5px; margin: 0 0 8px; }
+  .feature p { margin: 0 0 10px; color: var(--slate-700); font-size: 14.5px; }
+  .feature a.see {
+    font-size: 13px; font-weight: 700; color: var(--emerald-500); text-decoration: none;
+  }
+  .feature a.see:hover { text-decoration: underline; }
+
+  /* Kept list */
+  .kept-list { display: grid; gap: 10px; margin-top: 22px; }
+  .kept-item { display: flex; gap: 12px; align-items: baseline; font-size: 14.5px; color: var(--slate-700); }
+  .kept-item .check { color: var(--emerald-500); font-weight: 700; flex-shrink: 0; }
+
+  /* Closing */
+  .closing {
+    background: var(--navy-950); color: var(--white); border-radius: 18px;
+    padding: 40px; margin-top: 8px;
+  }
+  .closing h2 { color: var(--white); }
+  .closing p { color: var(--slate-300); font-size: 15px; max-width: 560px; }
+  .closing .link-row { margin-top: 20px; }
+
+  footer.doc-footer { max-width: 860px; margin: 40px auto 0; padding: 0 24px; color: var(--slate-500); font-size: 13px; }
+
+  @media (max-width: 640px) {
+    .feature { grid-template-columns: 1fr; }
+    .feature-num { display: none; }
+    table, thead, tbody, th, td, tr { display: block; }
+    thead { display: none; }
+    tbody tr { border-bottom: 2px solid var(--slate-100); padding-bottom: 8px; margin-bottom: 8px; }
+    tbody th, tbody td { border-bottom: none; padding: 6px 14px; }
+  }
+</style>
+
+<div class="masthead">
+  <div class="masthead-inner">
+    <div class="eyebrow">Redesign Summary</div>
+    <h1>What changed on ultimatumfinesse.co.bw</h1>
+    <p class="lede">A working summary of the redesign completed for Ultimatum Finesse — what's different from the original WordPress site, why each change was made, and where to see it live.</p>
+    <div class="link-row">
+      <a class="primary" href="https://danzo111.github.io/Ultimatum-finesse/" target="_blank" rel="noopener">View the live site ↗</a>
+      <a class="ghost" href="https://github.com/danzo111/Ultimatum-finesse" target="_blank" rel="noopener">View the source ↗</a>
+    </div>
+    <div class="meta-line">Prepared by Daniel Kimani Njoroge · July 2026</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <div class="section-label">At a Glance</div>
+  <h2>Same business, rebuilt from the ground up</h2>
+  <p class="intro">Nothing about who Ultimatum Finesse is has changed. What changed is how that gets shown, and how much of the company's real work is actually visible on the site.</p>
+  <div class="container">
+  <table>
+    <thead>
+      <tr><th></th><th>Original site</th><th>New site</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th>Platform</th>
+        <td class="old"><span class="tag-old">Before</span><br>WordPress + Sinatra theme, WPBakery page builder, Revolution Slider plugin</td>
+        <td class="new"><span class="tag-new">Now</span><br>Hand-built, no page-builder overhead, loads in a fraction of the time</td>
+      </tr>
+      <tr>
+        <th>Brand colours</th>
+        <td class="old"><span class="tag-old">Before</span><br>Generic template palette, not drawn from the real logo</td>
+        <td class="new"><span class="tag-new">Now</span><br>Green and white sampled directly from your actual logo</td>
+      </tr>
+      <tr>
+        <th>Project visibility</th>
+        <td class="old"><span class="tag-old">Before</span><br>Projects only existed inside a PDF nobody browsing the site would ever open</td>
+        <td class="new"><span class="tag-new">Now</span><br>16 real projects plotted on a live, filterable satellite map</td>
+      </tr>
+      <tr>
+        <th>Client relationships</th>
+        <td class="old"><span class="tag-old">Before</span><br>A logo carousel with no context on what any of the work was</td>
+        <td class="new"><span class="tag-new">Now</span><br>Partner story cards, plus hover tooltips on 7 more clients showing the actual project</td>
+      </tr>
+      <tr>
+        <th>Services listed</th>
+        <td class="old"><span class="tag-old">Before</span><br>6 disciplines</td>
+        <td class="new"><span class="tag-new">Now</span><br>7 — Handheld LiDAR Stockpile Scanning added at your request</td>
+      </tr>
+      <tr>
+        <th>Blog</th>
+        <td class="old"><span class="tag-old">Before</span><br>Default WordPress "Hello World" post, never replaced</td>
+        <td class="new"><span class="tag-new">Now</span><br>An Insights page: 7 real, short explainers on GIS/LiDAR/BIM topics for non-technical clients</td>
+      </tr>
+      <tr>
+        <th>Company profile</th>
+        <td class="old"><span class="tag-old">Before</span><br>Not linked anywhere on the site</td>
+        <td class="new"><span class="tag-new">Now</span><br>Hosted on the site, downloadable from a button at the top of the About page</td>
+      </tr>
+      <tr>
+        <th>Mobile & accessibility</th>
+        <td class="old"><span class="tag-old">Before</span><br>Not tested against accessibility guidelines</td>
+        <td class="new"><span class="tag-new">Now</span><br>Keyboard-navigable, screen-reader-friendly, tested down to phone width</td>
+      </tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">In Detail</div>
+  <h2>The seven changes that matter most</h2>
+
+  <div class="feature">
+    <div class="feature-num">01</div>
+    <div>
+      <h3>A live map of real project sites</h3>
+      <p>The centrepiece of the new site. All 16 projects from the Company Profile — including the Lotsane and Gaborone Dam LiDAR surveys currently underway — are plotted on a satellite map, filterable by service type. This is the single strongest way to show a visiting client the scale and spread of the work without them reading a PDF.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/projects.html" target="_blank" rel="noopener">See the map →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">02</div>
+    <div>
+      <h3>Partner stories, not just a logo wall</h3>
+      <p>Geoflux, Lucara, Champs Botswana, Urban Heights, Envirosolve and Wild African Safaris each get a short card describing the actual work done together. Seven more partners (Trail Surveys, Stet Surveying, Geosurv, Asphalt, J.S Planning, Integrated Engineers, Ministry of Health) show their project on hover or keyboard focus, so the page stays uncluttered but the detail is one interaction away.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/projects.html" target="_blank" rel="noopener">See the partner stories →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">03</div>
+    <div>
+      <h3>Brand colours pulled from the real logo</h3>
+      <p>The whole site is re-themed in the green and white sampled directly from the Ultimatum Finesse logo, rather than a generic template palette. Every page, button and map marker uses the same system.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/" target="_blank" rel="noopener">See the homepage →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">04</div>
+    <div>
+      <h3>Handheld LiDAR Stockpile Scanning added</h3>
+      <p>Added as service #7, exactly as requested — walk-around handheld scanning for fast, repeatable stockpile volume measurements at mines, quarries and aggregate yards.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/services.html#stockpile" target="_blank" rel="noopener">See the service page →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">05</div>
+    <div>
+      <h3>An Insights page that replaces the empty blog</h3>
+      <p>The old blog had one default WordPress post and nothing since. Insights is a short, curated reading list — one real article per service line, from sources like Esri, Autodesk and FARO — written for the people commissioning the work, not the people doing it. Each has a real photo relevant to the topic.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/insights.html" target="_blank" rel="noopener">See Insights →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">06</div>
+    <div>
+      <h3>The Company Profile is finally on the website</h3>
+      <p>Previously the profile only existed as a PDF sent by email. It's now hosted on the site and downloadable from a prominent button at the top of the About page — one of the first things a visitor sees.</p>
+      <a class="see" href="https://danzo111.github.io/Ultimatum-finesse/about.html" target="_blank" rel="noopener">See the About page →</a>
+    </div>
+  </div>
+
+  <div class="feature">
+    <div class="feature-num">07</div>
+    <div>
+      <h3>Built to modern web standards</h3>
+      <p>Keyboard navigation, screen-reader support, visible focus states, and a "skip to content" link on every page. Images are sized to prevent layout jumping while the page loads. Tested at phone, tablet and desktop widths.</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="section-label">Unchanged</div>
+  <h2>What we kept</h2>
+  <p class="intro">The redesign is a rebuild of the presentation, not a rewrite of the company. Every fact below is carried over unchanged from your Company Profile and original site.</p>
+  <div class="kept-list">
+    <div class="kept-item"><span class="check">✓</span> Founded 2013, proudly citizen-owned, CAAB-certified for commercial drone operations</div>
+    <div class="kept-item"><span class="check">✓</span> All seven — now — service disciplines and their real applications</div>
+    <div class="kept-item"><span class="check">✓</span> Office address, phone lines and email exactly as published</div>
+    <div class="kept-item"><span class="check">✓</span> Vision and Mission statements, word for word</div>
+    <div class="kept-item"><span class="check">✓</span> Every client and partner named in the Company Profile</div>
+  </div>
+</section>
+
+<section style="border-bottom: none; padding-bottom: 0;">
+  <div class="closing">
+    <h2>Ready when you are</h2>
+    <p>The site is live and the quote for finishing and hosting it is with you. Any of the sections above can be adjusted before launch — nothing here is final until you sign off on it.</p>
+    <div class="link-row">
+      <a class="primary" href="https://danzo111.github.io/Ultimatum-finesse/" target="_blank" rel="noopener">Open the live site ↗</a>
+    </div>
+  </div>
+</section>
+
+</div>
+
+<footer class="doc-footer">
+  Prepared by Daniel Kimani Njoroge for Ultimatum Finesse (Pty) Ltd. This document is a working summary, not a contract.
+</footer>
