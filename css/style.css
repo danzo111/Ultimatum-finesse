@@ -610,14 +610,14 @@ button { font-family: inherit; cursor: pointer; }
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
-  width: 190px;
-  height: 130px;
+  gap: 14px;
+  width: 230px;
+  height: 160px;
   flex-shrink: 0;
   background: var(--white);
   border: 1px solid var(--slate-100);
   border-radius: var(--radius);
-  padding: 18px 20px;
+  padding: 22px 24px;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }
 .logo-slide:hover {
@@ -627,16 +627,13 @@ button { font-family: inherit; cursor: pointer; }
 }
 .logo-slide img {
   max-width: 100%;
-  max-height: 42px;
+  max-height: 60px;
   object-fit: contain;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter 0.25s ease;
 }
-.logo-slide:hover img { filter: grayscale(0) opacity(1); }
 .logo-slide-name {
   font-family: var(--font-display);
   font-weight: 700;
-  font-size: 12.5px;
+  font-size: 13.5px;
   letter-spacing: 0.3px;
   color: var(--slate-700);
   text-align: center;
