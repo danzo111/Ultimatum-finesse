@@ -236,7 +236,7 @@ button { font-family: inherit; cursor: pointer; }
   align-items: center;
   box-shadow: var(--shadow-sm);
 }
-.brand-logo-badge img { height: 34px; width: auto; display: block; }
+.brand-logo-badge img { height: 46px; width: auto; display: block; }
 .footer-brand .brand-logo-badge img { height: 40px; }
 .brand span.sub {
   display: block;
@@ -1150,7 +1150,7 @@ button { font-family: inherit; cursor: pointer; }
   .nav-toggle { display: block; }
   /* Larger, more prominent brand lockup at the top on mobile */
   .brand-logo-badge { padding: 8px 14px; }
-  .brand-logo-badge img { height: 48px; }
+  .brand-logo-badge img { height: 56px; }
   .services-grid, .articles-grid { grid-template-columns: 1fr; }
   .service-detail { grid-template-columns: 1fr; }
   /* Portrait photos need a taller, width-capped frame on full-width mobile rows */
