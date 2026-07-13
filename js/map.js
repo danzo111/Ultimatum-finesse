@@ -134,9 +134,11 @@ function ufMarkerIcon(color) {
       display:block;width:16px;height:16px;border-radius:50%;
       background:${color};border:3px solid #fff;
       box-shadow:0 2px 8px rgba(11,20,5,0.35);"></span>`,
-    iconSize: [16, 16],
-    iconAnchor: [8, 8],
-    popupAnchor: [0, -10],
+    // Container is larger than the visible dot so the tap/click target
+    // meets the WCAG 2.5.8 minimum (24x24px); the dot stays centered inside it.
+    iconSize: [26, 26],
+    iconAnchor: [13, 13],
+    popupAnchor: [0, -14],
   });
 }
 
@@ -168,7 +170,12 @@ function initUfMap(elId, options = {}) {
   const markers = {};
   UF_PROJECTS.forEach((p) => {
     const cat = UF_CATEGORIES[p.category];
-    const marker = L.marker(p.coords, { icon: ufMarkerIcon(cat.color) }).addTo(map);
+    const marker = L.marker(p.coords, {
+      icon: ufMarkerIcon(cat.color),
+      alt: `${p.name} project marker`,
+    }).addTo(map);
+    const markerEl = marker.getElement();
+    if (markerEl) markerEl.setAttribute("aria-label", `${p.name}, ${p.place}`);
     const statusTag = p.status
       ? `<span style="display:inline-block;background:#81ad1c;color:#fff;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;padding:2px 8px;border-radius:999px;margin-bottom:5px;">${p.status}</span><br>`
       : "";

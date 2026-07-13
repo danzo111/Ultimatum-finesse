@@ -800,6 +800,13 @@ button { font-family: inherit; cursor: pointer; }
 .article-featured .photo-frame { height: 320px; }
 
 /* ============ MAP / PROJECTS ============ */
+.uf-marker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+}
 .map-toolbar {
   display: flex;
   flex-wrap: wrap;
