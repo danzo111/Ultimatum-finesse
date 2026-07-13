@@ -231,12 +231,12 @@ button { font-family: inherit; cursor: pointer; }
 .brand-logo-badge {
   background: var(--white);
   border-radius: 8px;
-  padding: 6px 12px;
+  padding: 8px 16px;
   display: flex;
   align-items: center;
   box-shadow: var(--shadow-sm);
 }
-.brand-logo-badge img { height: 46px; width: auto; display: block; }
+.brand-logo-badge img { height: 68px; width: auto; display: block; }
 .footer-brand .brand-logo-badge img { height: 40px; }
 .brand span.sub {
   display: block;
