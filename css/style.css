@@ -307,29 +307,38 @@ button { font-family: inherit; cursor: pointer; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  background: radial-gradient(circle at 82% 18%, rgba(159,194,42,0.22), transparent 45%),
-              radial-gradient(circle at 8% 90%, rgba(176,217,50,0.12), transparent 40%),
-              linear-gradient(160deg, var(--navy-950) 0%, var(--navy-900) 55%, var(--navy-800) 100%);
+  /* Fallback background: shown until js/hero-terrain.js's WebGL canvas
+     takes over, and permanently on narrow/no-WebGL/reduced-motion cases
+     that skip the render loop -- in Botswana's own flag blue rather than
+     the brand navy, so the fallback still reads as the same idea. */
+  background: linear-gradient(160deg, #0d1720 0%, #17324c 55%, #204866 100%);
   color: var(--white);
   overflow: hidden;
   padding-top: 120px;
 }
-/* Signature backdrop: procedurally-generated contour rings, standing in
-   for the terrain data this company actually produces -- not a generic
-   dot-grid. See assets/contour-field.svg. */
+/* Live 3D terrain, coloured in the flag's black/blue/white -- see
+   js/hero-terrain.js. Sits behind everything else in the hero. */
+#hero-3d {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 0;
+}
+/* Scrim: keeps hero text legible over the terrain no matter what's
+   rendered underneath -- darkest on the text side (left column). */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: url("../assets/contour-field.svg");
-  background-size: cover;
-  background-position: 62% 40%;
-  opacity: 0.9;
+  z-index: 1;
+  background: linear-gradient(100deg, rgba(6,10,6,0.82) 0%, rgba(6,10,6,0.55) 42%, rgba(6,10,6,0.22) 75%, rgba(6,10,6,0.35) 100%);
   pointer-events: none;
 }
 .hero-grid {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   display: grid;
   grid-template-columns: 1.1fr 0.9fr;
   gap: 48px;

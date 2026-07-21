@@ -43,6 +43,7 @@
 <main id="main">
 
 <section class="hero">
+  <canvas id="hero-3d" aria-hidden="true"></canvas>
   <div class="container">
     <div class="hero-grid">
       <div>
@@ -317,6 +318,7 @@
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="js/map.js"></script>
 <script src="js/main.js"></script>
+<script type="module" src="js/hero-terrain.js"></script>
 <script>
   initUfMap("hero-map", { interactive: false, zoom: 5.3 });
 </script>
