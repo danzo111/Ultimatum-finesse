@@ -61,10 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Animated counters
   const counters = document.querySelectorAll("[data-count]");
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (counters.length) {
     const animate = (el) => {
       const target = parseInt(el.dataset.count, 10);
       const suffix = el.dataset.suffix || "";
+      if (prefersReducedMotion) {
+        el.textContent = target.toLocaleString() + suffix;
+        return;
+      }
       const duration = 1400;
       const start = performance.now();
       const step = (now) => {

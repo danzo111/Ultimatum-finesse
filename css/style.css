@@ -15,8 +15,6 @@
   --emerald-500: #729c15;
   --emerald-400: #9fc22a;
   --emerald-300: #cfe873;
-  --amber-500: #81ad1c;
-  --amber-400: #b0d932;
   --slate-50: #f6f9f0;
   --slate-100: #eaefe0;
   --slate-300: #c7cfba;
@@ -24,8 +22,16 @@
   --slate-700: #46523a;
   --white: #ffffff;
 
+  /* Warm accent sampled from Kalahari sand / sunset over the Okavango --
+     used only for survey-annotation details (index marks, benchmarks,
+     timeline years), never for primary UI, so it reads as a deliberate
+     second voice rather than a competing brand color. */
+  --terracotta-500: #b5591f;
+  --terracotta-400: #d97b3f;
+
   --font-display: "Rajdhani", sans-serif;
   --font-body: "Inter", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --shadow-sm: 0 2px 8px rgba(11, 20, 5, 0.08);
   --shadow-md: 0 8px 30px rgba(11, 20, 5, 0.12);
@@ -116,21 +122,31 @@ button { font-family: inherit; cursor: pointer; }
 .eyebrow {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 2.5px;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 12.5px;
+  letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--emerald-500);
   margin-bottom: 14px;
 }
+/* Benchmark mark: a small survey-crosshair, standing in for the generic
+   dash/rule most sites use ahead of an eyebrow label. */
 .eyebrow::before {
   content: "";
-  width: 26px;
-  height: 2px;
-  background: var(--amber-500);
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: var(--terracotta-500);
+  background:
+    linear-gradient(currentColor, currentColor) center / 100% 1.5px no-repeat,
+    linear-gradient(currentColor, currentColor) center / 1.5px 100% no-repeat,
+    radial-gradient(circle, transparent 3.5px, currentColor 4px, currentColor 4.6px, transparent 5px);
   display: inline-block;
+}
+.section--dark .eyebrow::before, .hero .eyebrow::before, .page-hero .eyebrow::before {
+  color: var(--terracotta-400);
 }
 
 .section {
@@ -172,7 +188,7 @@ button { font-family: inherit; cursor: pointer; }
   background: var(--emerald-500);
   color: var(--navy-950);
 }
-.btn-primary:hover { background: var(--amber-500); transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.btn-primary:hover { background: var(--emerald-400); transform: translateY(-2px); box-shadow: var(--shadow-md); }
 .btn-outline {
   border-color: rgba(255,255,255,0.35);
   color: var(--white);
@@ -298,15 +314,17 @@ button { font-family: inherit; cursor: pointer; }
   overflow: hidden;
   padding-top: 120px;
 }
+/* Signature backdrop: procedurally-generated contour rings, standing in
+   for the terrain data this company actually produces -- not a generic
+   dot-grid. See assets/contour-field.svg. */
 .hero::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image:
-    linear-gradient(rgba(255,255,255,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,0.045) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse at 60% 40%, black 10%, transparent 72%);
+  background-image: url("../assets/contour-field.svg");
+  background-size: cover;
+  background-position: 62% 40%;
+  opacity: 0.9;
   pointer-events: none;
 }
 .hero-grid {
@@ -367,6 +385,24 @@ button { font-family: inherit; cursor: pointer; }
   box-shadow: 0 0 0 0 rgba(176,217,50,0.7);
   animation: pulse 1.8s infinite;
 }
+/* Coordinate readout, styled like a GIS viewport's cursor-position overlay --
+   real numbers (Gaborone HQ), not a decorative flourish. */
+.hero-panel-coords {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 500;
+  background: rgba(11,20,5,0.78);
+  backdrop-filter: blur(6px);
+  color: var(--slate-100);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.3px;
+  padding: 7px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.hero-panel-coords .deg { color: var(--terracotta-400); }
 @keyframes pulse {
   0% { box-shadow: 0 0 0 0 rgba(176,217,50,0.6); }
   70% { box-shadow: 0 0 0 10px rgba(176,217,50,0); }
@@ -387,10 +423,11 @@ button { font-family: inherit; cursor: pointer; }
 }
 .stat { text-align: center; }
 .stat-num {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 4vw, 46px);
-  font-weight: 700;
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 3.6vw, 40px);
+  font-weight: 600;
   color: var(--emerald-400);
+  font-variant-numeric: tabular-nums;
 }
 .stat-label {
   font-size: 13px;
@@ -505,11 +542,11 @@ button { font-family: inherit; cursor: pointer; }
 .service-detail-photo.is-portrait img { object-position: center 45%; }
 .service-detail h3 { font-size: 26px; margin-bottom: 8px; }
 .service-detail .index-no {
-  font-family: var(--font-display);
-  font-size: 13px;
-  color: var(--amber-500);
-  font-weight: 700;
-  letter-spacing: 1px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--terracotta-500);
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 
 /* ============ CLIENTS ============ */
@@ -764,9 +801,10 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12.5px;
+  font-family: var(--font-mono);
+  font-size: 12px;
   color: var(--slate-500);
-  font-weight: 600;
+  font-weight: 500;
   border-top: 1px solid var(--slate-100);
   padding-top: 14px;
   margin-top: auto;
@@ -924,7 +962,7 @@ button { font-family: inherit; cursor: pointer; }
   content: ""; position: absolute; left: -28px; top: 4px; width: 12px; height: 12px;
   border-radius: 50%; background: var(--emerald-500); border: 3px solid var(--white); box-shadow: 0 0 0 2px var(--emerald-500);
 }
-.timeline-year { font-family: var(--font-display); font-weight: 700; color: var(--amber-500); font-size: 14px; }
+.timeline-year { font-family: var(--font-display); font-weight: 700; color: var(--terracotta-500); font-size: 14px; }
 .timeline-item h4 { margin: 4px 0 6px; font-size: 17px; }
 .timeline-item p { font-size: 14.5px; margin: 0; }
 
@@ -951,7 +989,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--amber-500);
+  color: var(--terracotta-500);
 }
 .process-arrow svg { width: 18px; height: 18px; }
 @media (max-width: 760px) {
@@ -1100,9 +1138,10 @@ button { font-family: inherit; cursor: pointer; }
 .page-hero::before {
   content: "";
   position: absolute; inset: 0;
-  background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
-  background-size: 44px 44px;
-  mask-image: radial-gradient(ellipse at 30% 30%, black 10%, transparent 70%);
+  background-image: url("../assets/contour-field.svg");
+  background-size: cover;
+  background-position: 30% 25%;
+  opacity: 0.7;
 }
 .page-hero .container { position: relative; z-index: 1; }
 .breadcrumb { font-size: 13.5px; color: var(--slate-300); margin-bottom: 14px; }
