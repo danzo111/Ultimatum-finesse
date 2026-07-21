@@ -484,8 +484,9 @@ button { font-family: inherit; cursor: pointer; }
 .service-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
 /* Keep the top third of this shot -- the GPS receiver unit itself,
    just under the sky -- rather than the cinder blocks lower in frame
-   or the bare tripod legs/grass at the bottom. */
-.service-card-photo.photo-focus-low img { object-position: center top; }
+   or the bare tripod legs/grass at the bottom. Nudged past the plain
+   sky band so the tree/receiver fill the frame instead of empty space. */
+.service-card-photo.photo-focus-low img { object-position: center 8%; transform: scale(1.3); transform-origin: 68% 15%; }
 .service-card-photo .service-icon {
   position: absolute;
   bottom: -22px;
