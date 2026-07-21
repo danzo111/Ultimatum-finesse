@@ -482,9 +482,10 @@ button { font-family: inherit; cursor: pointer; }
 .service-card--photo { padding: 0; overflow: hidden; }
 .service-card-photo { position: relative; height: 176px; }
 .service-card-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
-/* This particular shot has cinder blocks along the top edge; bias the
-   crop down so the card shows more tripod/grass and none of the wall. */
-.service-card-photo.photo-focus-low img { object-position: center 80%; }
+/* Keep the top third of this shot -- the GPS receiver unit itself,
+   just under the sky -- rather than the cinder blocks lower in frame
+   or the bare tripod legs/grass at the bottom. */
+.service-card-photo.photo-focus-low img { object-position: center top; }
 .service-card-photo .service-icon {
   position: absolute;
   bottom: -22px;
