@@ -40,23 +40,56 @@ document.addEventListener("DOMContentLoaded", () => {
     svg.setAttribute("aria-hidden", "true");
   });
 
-  // Scroll reveal
+  // Scroll reveal.
+  // Bugfix: the previous logic used threshold:0.15, so a .reveal element taller
+  // than the viewport — e.g. the single .page-content-block wrapper on the
+  // About/Insights pages that holds ALL of the pasted content — never reached
+  // 15% visibility on load and stayed hidden (blank page) until the user
+  // scrolled. Now we reveal anything already in the viewport at load regardless
+  // of its size, observe the rest with threshold:0 so they still animate in on
+  // scroll, and force-reveal everything as a backstop so nothing can get stuck.
   const revealEls = document.querySelectorAll(".reveal");
-  if ("IntersectionObserver" in window && revealEls.length) {
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("in-view");
-            io.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.15 }
-    );
-    revealEls.forEach((el) => io.observe(el));
-  } else {
-    revealEls.forEach((el) => el.classList.add("in-view"));
+  if (revealEls.length) {
+    const reveal = (el) => el.classList.add("in-view");
+    const inViewport = (el) => {
+      const r = el.getBoundingClientRect();
+      const vh = window.innerHeight || document.documentElement.clientHeight;
+      const vw = window.innerWidth || document.documentElement.clientWidth;
+      // true if ANY part of the element overlaps the viewport (handles elements
+      // that are much taller than the screen, which is the About/Insights case)
+      return r.bottom > 0 && r.top < vh && r.right > 0 && r.left < vw;
+    };
+
+    if ("IntersectionObserver" in window) {
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              reveal(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -8% 0px" }
+      );
+      revealEls.forEach((el) => {
+        if (inViewport(el)) {
+          reveal(el); // already on screen at load — show immediately, no scroll needed
+        } else {
+          io.observe(el); // below the fold — reveal when scrolled into view
+        }
+      });
+    } else {
+      // No IntersectionObserver support: show everything.
+      revealEls.forEach(reveal);
+    }
+
+    // Safety net — guarantee content can never stay invisible (observer never
+    // fires, layout shift, oversized wrapper, etc.): force-reveal all shortly
+    // after load, plus an absolute fallback timer.
+    const revealAll = () => revealEls.forEach(reveal);
+    window.addEventListener("load", () => setTimeout(revealAll, 1500));
+    setTimeout(revealAll, 3000);
   }
 
   // Animated counters

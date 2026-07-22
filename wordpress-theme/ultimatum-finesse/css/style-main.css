@@ -1169,8 +1169,16 @@ button { font-family: inherit; cursor: pointer; }
 .page-hero p { max-width: 560px; color: var(--slate-300); font-size: 17px; }
 
 /* ============ REVEAL ANIMATION ============ */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.reveal.in-view { opacity: 1; transform: translateY(0); }
+/* Scroll-reveal. The hidden state is gated behind `.js` (added to <html> by an
+   inline script in header.php), so if JS is absent or fails the content is
+   ALWAYS visible — it can never get stuck at opacity:0. main.js reveals anything
+   already in view on load and observes the rest. */
+.js .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.js .reveal.in-view { opacity: 1; transform: translateY(0); }
+/* Reduced-motion: skip the reveal animation and just show the content. */
+@media (prefers-reduced-motion: reduce) {
+  .js .reveal { opacity: 1; transform: none; transition: none; }
+}
 
 /* ============ RESPONSIVE ============ */
 @media (max-width: 980px) {
