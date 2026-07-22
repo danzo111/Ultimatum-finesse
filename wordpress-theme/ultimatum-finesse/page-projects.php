@@ -1,0 +1,190 @@
+<?php
+/* Template Name: Projects */
+get_header();
+?>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a> / Projects</div>
+    <h1>Our project sites, on a live map</h1>
+    <p>Every pin marks a real project, from the 754 km Phokojwe&ndash;Kazungula powerline survey to the LiDAR scanning now underway at Lotsane and Gaborone Dams. Filter by category to explore.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="map-toolbar reveal" id="map-filters">
+      <button class="map-filter active" data-filter="all">All Projects</button>
+      <button class="map-filter" data-filter="lidar" style="border-color:#e8930c">LiDAR &amp; Dam Surveys</button>
+      <button class="map-filter" data-filter="survey" style="border-color:#0891b2">Surveying &amp; Mapping</button>
+      <button class="map-filter" data-filter="photo" style="border-color:#e11d48">Aerial &amp; Photogrammetry</button>
+      <button class="map-filter" data-filter="gis" style="border-color:#81ad1c">Data Processing &amp; GIS</button>
+    </div>
+
+    <div id="projects-map" class="map-embed reveal"></div>
+
+    <div class="map-legend reveal">
+      <span><span class="legend-dot" style="background:#e8930c"></span>LiDAR &amp; Dam Surveys</span>
+      <span><span class="legend-dot" style="background:#0891b2"></span>Surveying &amp; Mapping</span>
+      <span><span class="legend-dot" style="background:#e11d48"></span>Aerial Photography &amp; Photogrammetry</span>
+      <span><span class="legend-dot" style="background:#81ad1c"></span>Data Processing &amp; GIS</span>
+    </div>
+    <p class="form-note" style="margin-top:14px;">Pin locations are approximate (town/site level). Satellite imagery from Esri.</p>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow" style="justify-content:center">Featured Work</div>
+      <h2>Flagship projects</h2>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="6" height="6" rx="1"/><path d="M9 9L4 4M15 9l5-5M9 15l-5 5M15 15l5 5"/><circle cx="4" cy="4" r="1.4"/><circle cx="20" cy="4" r="1.4"/><circle cx="4" cy="20" r="1.4"/><circle cx="20" cy="20" r="1.4"/></svg></div>
+        <h3>Lotsane &amp; Gaborone Dam LiDAR Surveys</h3>
+        <p>Currently underway: LiDAR scanning and surveying of Lotsane Dam with 30 km of river downstream at Maunatlala, and Gaborone Dam with 25 km downstream.</p>
+        <div class="tag-row"><span class="tag">Ongoing</span><span class="tag">LiDAR</span><span class="tag">Dam Surveying</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-4 2 2-6z"/></svg></div>
+        <h3>Phokojwe&ndash;Kazungula Powerline Survey</h3>
+        <p>Cadastral and infrastructure survey of the proposed 754 km powerline corridor at 500 m intervals, delivered 2023&ndash;2024 for Geoflux.</p>
+        <div class="tag-row"><span class="tag">754 km</span><span class="tag">Cadastral</span><span class="tag">Infrastructure</span></div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8h3l1.5-2h7L17 8h3a1 1 0 0 1 1 1v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/><circle cx="12" cy="13" r="3.3"/></svg></div>
+        <h3>Karowe Mine Aerial Survey</h3>
+        <p>Aerial survey of the full Lucara Karowe mine lease, establishing the aerial control network and levelling 10 benchmarks within the mine pit.</p>
+        <div class="tag-row"><span class="tag">Letlhakane</span><span class="tag">Mining</span><span class="tag">Aerial Controls</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow" style="justify-content:center">From the Field</div>
+      <h2>Real capture, real deliverables</h2>
+    </div>
+    <div class="gallery-grid reveal">
+      <div class="photo-frame"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/survey-2.jpg' ); ?>" width="600" height="350" loading="lazy" alt="Photogrammetry point cloud of a quarry stockpile"><span class="photo-caption">Quarry stockpile point cloud</span></div>
+      <div class="photo-frame"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/survey-3.jpg' ); ?>" width="600" height="350" loading="lazy" alt="Aerial orthomosaic reconstruction of a road junction"><span class="photo-caption">Road junction orthomosaic</span></div>
+      <div class="photo-frame"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/gps-surveying.jpg' ); ?>" width="684" height="912" loading="lazy" alt="RTK GPS survey on a residential construction site"><span class="photo-caption">RTK ground control survey</span></div>
+      <div class="photo-frame"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/drone-services.jpg' ); ?>" width="810" height="1080" loading="lazy" alt="Technician preparing a drone for an aerial survey"><span class="photo-caption">Drone survey deployment</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head center reveal">
+      <div class="eyebrow" style="justify-content:center">Working Together</div>
+      <h2>Partner stories</h2>
+      <p>A look at the sectors and organisations we partner with across Botswana, from mining houses to property developers.</p>
+    </div>
+    <div class="partner-stories-grid reveal">
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-geoflux.jpeg' ); ?>" width="350" height="342" loading="lazy" alt="Geoflux"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Water &amp; Energy Infrastructure</span>
+          <h3>Geoflux</h3>
+          <p>Our largest programme of joint work: QA/QC surveying during the Kanye water network emergency works (2023&ndash;2024), the 754 km Phokojwe&ndash;Kazungula powerline cadastral survey, 100+ km of pipeline corridor topographic surveys at Kanye and Moshupa, and reservoir bottom-level surveys.</p>
+        </div>
+      </div>
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-lucara.png' ); ?>" width="225" height="225" loading="lazy" alt="Lucara Diamond"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Mining &amp; Minerals</span>
+          <h3>Lucara Karowe Mine</h3>
+          <p>Survey of aerial controls within the Karowe mine lease, setting and levelling of 10 benchmarks inside the mine pit, and aerial surveying of the full mine lease (subcontracted by GT Geomatics).</p>
+        </div>
+      </div>
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-champs.png' ); ?>" width="816" height="510" loading="lazy" alt="Champs Botswana"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Engineering &amp; Events</span>
+          <h3>Champs Botswana</h3>
+          <p>The BUAN AgroVoltaic project, consultation on the 30 km Mathathane&ndash;Platjan road project (2023), and survey support for the Toyota Desert Race (2019).</p>
+        </div>
+      </div>
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-urbanheights.jpg' ); ?>" width="1180" height="891" loading="lazy" alt="Urban Heights" style="border-radius:8px;"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Master Planning</span>
+          <h3>Urban Heights</h3>
+          <p>Topographic survey of 371 hectares for the master planning of the Botswana University of Agriculture and Natural Resources (2022&ndash;2023).</p>
+        </div>
+      </div>
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-envirosolve.png' ); ?>" width="495" height="102" loading="lazy" alt="Envirosolve"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Environmental Consulting</span>
+          <h3>Envirosolve</h3>
+          <p>Topographic survey of the proposed Gamodubu pipeline: a 5 km route on a 200 m wide corridor, feeding route design and environmental assessment.</p>
+        </div>
+      </div>
+      <div class="partner-story-card">
+        <div class="partner-story-logo"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/client-wildafrica.png' ); ?>" width="300" height="47" loading="lazy" alt="Wild African Safaris"></div>
+        <div class="partner-story-body">
+          <span class="partner-story-sector">Conservation &amp; Tourism</span>
+          <h3>Wild African Safaris</h3>
+          <p>Orthophoto ranch mapping across 1,300 hectares, giving planners a current, accurate aerial base for land-use decisions.</p>
+        </div>
+      </div>
+    </div>
+    <div class="clients-strip reveal" style="margin-top:28px;">
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-trail">Trail Surveys</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-trail">Drone data processing and CAD drafting across the Morupule area and several road designs, plus a 700 Ha topographic survey at the Gantsi SEZA site and the 35 km Somelo realignment pipeline.</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-stet">Stet Surveying</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-stet">Cadastral survey of 279 plots in Serowe&ndash;Tshikinyega, 2023.</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-geosurv">Geosurv</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-geosurv">A 350 Ha topographic survey of the Lobatse Special Economic Zone, plus a 10 Ha survey for the Shakawe solar power site.</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-asphalt">Asphalt</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-asphalt">Aerial surveys of the Seherelela, Sesung and Sese borrow pits, plus the 72.57 km Kanye Junction to Jwaneng roundabout road contract.</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-jsplanning">J.S Planning</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-jsplanning">Orthophoto mapping for planning at Manong Lodge (15 Ha) and farm properties at Otse (40 Ha).</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-integrated">Integrated Engineers</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-integrated">Topographic survey of LLR Plot 64260, 2023.</span>
+      </span>
+      <span class="client-chip-wrap">
+        <span class="client-chip" tabindex="0" aria-describedby="tip-moh">Ministry of Health</span>
+        <span class="chip-tooltip" role="tooltip" id="tip-moh">Geotechnical surveys at the Matlhaku Lekganyane and Maruapula clinics, ahead of staff housing development.</span>
+      </span>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="cta-band reveal">
+      <div>
+        <h2>Want your project on this map next?</h2>
+        <p>Share your site location and scope. We&rsquo;ll recommend the right combination of services.</p>
+      </div>
+      <div class="cta-band-actions">
+        <a href="<?php echo esc_url( home_url( '/contact-us/' ) ); ?>" class="btn btn-primary">Get Started</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    initUfMap('projects-map', { interactive: true, filters: 'map-filters', zoom: 5.6, dataUrl: ufMapData.projectsUrl });
+  });
+</script>
+
+<?php get_footer(); ?>

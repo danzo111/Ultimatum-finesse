@@ -1,0 +1,11 @@
+/*
+Theme Name: Ultimatum Finesse
+Author: Daniel Kimani Njoroge
+Description: Custom theme for Ultimatum Finesse
+Version: 1.0
+*/
+
+/* This file exists to satisfy WordPress's theme metadata requirement.
+   The site's actual styles live in css/style-main.css and are loaded
+   via wp_enqueue_style() in functions.php, so the original stylesheet
+   didn't need to be split apart or rewritten. */

@@ -8,3 +8,7 @@ Thumbs.db
 !.dev.vars.example
 .env*
 !.env.example
+
+# Packaged theme build artifact — large binary that duplicates the
+# wordpress-theme/ultimatum-finesse/ source tree; kept out of version control.
+wordpress-theme/ultimatum-finesse.zip

@@ -1,0 +1,121 @@
+<?php
+/* Template Name: Contact */
+get_header();
+?>
+
+<section class="page-hero">
+  <div class="container">
+    <div class="breadcrumb"><a href="<?php echo esc_url( home_url( '/' ) ); ?>">Home</a> / Contact</div>
+    <h1>Let&rsquo;s talk about your site</h1>
+    <p>Tell us what you need mapped, scanned or surveyed. We&rsquo;ll reply with the right approach and a clear estimate.</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="contact-grid">
+
+      <div class="contact-card reveal">
+        <h3>Get In Touch</h3>
+        <p style="color:var(--slate-300)">Based in Gaborone, working nationwide.</p>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          <div><div class="label">Office</div><div class="value">FFN 104, Loapi House, Plot 1272,<br>Old Lobatse Rd, Gaborone</div></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+          <div><div class="label">Email</div><div class="value"><a href="mailto:info@ultimatumfinesse.co.bw">info@ultimatumfinesse.co.bw</a></div></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 2 6a2 2 0 0 1 2-2z"/></svg>
+          <div><div class="label">Phone</div><div class="value"><a href="tel:+2673960383">Office: +267 396 0383</a><br><a href="tel:+26773397937">Cell: +267 73 397 937</a> / <a href="tel:+26772259178">72 259 178</a></div></div>
+        </div>
+        <div class="contact-row">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+          <div><div class="label">Hours</div><div class="value">Mon &ndash; Fri, 08:00 &ndash; 17:00 CAT</div></div>
+        </div>
+        <div class="social-row">
+          <a href="https://www.linkedin.com/company/ultimatum-finesse/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.78 2.65 4.78 6.1V21h-4v-5.6c0-1.34-.02-3.07-1.87-3.07-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg></a>
+          <a href="https://web.facebook.com/UltimatumFinesse" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M13.5 21v-8h2.7l.4-3.2h-3.1V7.7c0-.93.26-1.56 1.6-1.56h1.7V3.3C15.8 3.14 14.9 3 13.9 3c-2.4 0-4 1.46-4 4.15v2.65H7.2v3.2h2.7v8z"/></svg></a>
+          <a href="https://wa.me/26773397937" target="_blank" rel="noopener" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor" style="color:#fff"><path d="M12 2a10 10 0 0 0-8.6 15L2 22l5.2-1.4A10 10 0 1 0 12 2zm5.6 14.3c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .1-1.7-.1-.4-.1-.9-.3-1.6-.6-2.8-1.2-4.6-4-4.7-4.2-.1-.2-1.1-1.5-1.1-2.8 0-1.3.7-2 1-2.2.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5.2.6.7 1.9.8 2 .1.2.1.4 0 .6-.1.2-.2.3-.3.5-.2.2-.3.3-.5.5-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.7 1.7.3.1.5.1.6-.1.2-.2.7-.8.9-1.1.2-.3.4-.2.6-.1.2.1 1.5.7 1.8.8.3.1.5.2.5.3.1.2.1.7-.1 1.3z"/></svg></a>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div id="form-success" class="form-success" role="status" aria-live="polite">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
+          Thank you. Your message has been noted. This form is not yet connected to email, so please also reach us directly using the details alongside.
+        </div>
+        <form id="contact-form">
+          <div class="form-row-2">
+            <div class="form-field">
+              <label for="name">Full Name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Your name&hellip;" required>
+            </div>
+            <div class="form-field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email" spellcheck="false" placeholder="you@company.com" required>
+            </div>
+          </div>
+          <div class="form-row-2">
+            <div class="form-field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="+267&hellip;">
+            </div>
+            <div class="form-field">
+              <label for="service">Service Needed</label>
+              <select id="service" name="service">
+                <option>GIS Applications</option>
+                <option>Aerial &amp; Mobile LiDAR</option>
+                <option>3D Laser Scanning</option>
+                <option>Building Information Modelling</option>
+                <option>Aerial Photography &amp; Photogrammetry</option>
+                <option>Surveying &amp; Mapping</option>
+                <option>Not sure yet</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="message">Project Details</label>
+            <textarea id="message" name="message" rows="5" placeholder="Tell us about the site, scale and timeline&hellip;" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+          <p class="form-note">This form is not yet connected to a mail service. Please contact us directly using the details on this page.</p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section--alt">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Find Us</div>
+      <h2>Our office in Gaborone</h2>
+    </div>
+    <div id="contact-map" class="map-embed reveal"></div>
+    <a href="https://www.google.com/maps/dir/?api=1&destination=-24.6721551,25.9063727" target="_blank" rel="noopener" class="btn btn-dark" style="margin-top:18px;">
+      Get Directions
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l18-8-8 18-2-8-8-2z"/></svg>
+    </a>
+  </div>
+</section>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var officeMap = L.map('contact-map').setView([-24.6721551, 25.9063727], 14);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+      attribution: 'Tiles &copy; Esri',
+      maxZoom: 19,
+    }).addTo(officeMap);
+    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
+      maxZoom: 19,
+    }).addTo(officeMap);
+    L.marker([-24.6721551, 25.9063727], { icon: ufMarkerIcon('#81ad1c') })
+      .addTo(officeMap)
+      .bindPopup("<div class='popup-card'><h4>Ultimatum Finesse</h4><p>FFN 104, Loapi House, Plot 1272, Old Lobatse Rd, Gaborone</p></div>")
+      .openPopup();
+  });
+</script>
+
+<?php get_footer(); ?>
