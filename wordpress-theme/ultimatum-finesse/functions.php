@@ -26,14 +26,14 @@ function uf_enqueue_assets() {
 		'uf-style',
 		get_template_directory_uri() . '/css/style-main.css',
 		array(),
-		'1.0'
+		filemtime( get_theme_file_path( 'css/style-main.css' ) )
 	);
 
 	wp_enqueue_script(
 		'uf-main',
 		get_template_directory_uri() . '/js/main.js',
 		array(),
-		'1.0',
+		filemtime( get_theme_file_path( 'js/main.js' ) ),
 		true
 	);
 
@@ -55,7 +55,7 @@ function uf_enqueue_assets() {
 			'uf-map',
 			get_template_directory_uri() . '/js/map.js',
 			array( 'leaflet' ),
-			'1.0',
+			filemtime( get_theme_file_path( 'js/map.js' ) ),
 			true
 		);
 
@@ -72,7 +72,7 @@ function uf_enqueue_assets() {
 			'uf-hero-terrain',
 			get_template_directory_uri() . '/js/hero-terrain.js',
 			array(),
-			'1.0',
+			filemtime( get_theme_file_path( 'js/hero-terrain.js' ) ),
 			true
 		);
 	}
