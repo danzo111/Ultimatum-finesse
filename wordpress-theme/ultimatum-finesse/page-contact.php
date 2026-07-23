@@ -44,9 +44,13 @@ get_header();
       <div class="reveal">
         <div id="form-success" class="form-success" role="status" aria-live="polite">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg>
-          Thank you. Your message has been noted. This form is not yet connected to email, so please also reach us directly using the details alongside.
+          Thank you. Your message has been sent &mdash; we&rsquo;ll be in touch shortly.
         </div>
+        <div id="form-error" class="form-error" role="alert" aria-live="assertive"></div>
         <form id="contact-form">
+          <div class="uf-hp" aria-hidden="true">
+            <label>Company URL<input type="text" name="company_url" tabindex="-1" autocomplete="off"></label>
+          </div>
           <div class="form-row-2">
             <div class="form-field">
               <label for="name">Full Name</label>
@@ -80,7 +84,7 @@ get_header();
             <textarea id="message" name="message" rows="5" placeholder="Tell us about the site, scale and timeline&hellip;" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary btn-block">Send Message</button>
-          <p class="form-note">This form is not yet connected to a mail service. Please contact us directly using the details on this page.</p>
+          <p class="form-note">We usually reply within one business day. You can also reach us directly using the details on this page.</p>
         </form>
       </div>
     </div>

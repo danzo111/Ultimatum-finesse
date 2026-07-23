@@ -21,7 +21,7 @@
 <header class="site-header">
   <div class="container">
     <a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="brand">
-      <span class="brand-logo-badge"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/logo-full.jpg' ); ?>" width="1200" height="335" alt="Ultimatum Finesse: Providing Geospatial Knowledge"></span>
+      <span class="brand-logo-badge"><img src="<?php echo esc_url( get_template_directory_uri() . '/assets/logo-full.jpg' ); ?>" width="1200" height="335" alt="Ultimatum Finesse: Providing Geospatial Knowledge"><span class="logo-spark" aria-hidden="true"></span></span>
     </a>
     <nav class="main-nav">
       <?php

@@ -251,6 +251,7 @@ button { font-family: inherit; cursor: pointer; }
   display: flex;
   align-items: center;
   box-shadow: var(--shadow-sm);
+  position: relative; /* anchor for the on-load .logo-spark glint */
 }
 .brand-logo-badge img { height: 68px; width: auto; display: block; }
 .footer-brand .brand-logo-badge img { height: 40px; }
@@ -1326,4 +1327,65 @@ button { font-family: inherit; cursor: pointer; }
 
   /* TIGHTEN — inner-page hero. */
   .page-hero { padding: 120px 0 40px; }
+}
+
+/* ============ CONTACT FORM: honeypot + error message ============ */
+/* Honeypot: visually hidden, removed from the tab order and the a11y tree.
+   Real users never see or fill it; bots that do are rejected server-side. */
+.uf-hp {
+  position: absolute !important;
+  left: -9999px !important;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+.form-error {
+  display: none;
+  align-items: center;
+  gap: 10px;
+  background: rgba(179, 38, 30, 0.08);
+  border: 1px solid rgba(179, 38, 30, 0.35);
+  color: #b3261e;
+  padding: 14px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 18px;
+}
+.form-error.show { display: flex; }
+
+/* ============ LOGO "FINESSE" SPARK ============ */
+/* A single glint that traces the perimeter of the logo badge once on page
+   load, then settles (no infinite loop). Purely decorative:
+   - pointer-events:none so it never blocks the logo link,
+   - absolutely positioned inside the (position:relative) badge so it adds no
+     layout and cannot shift anything,
+   - the glow is a box-shadow only, so it can never widen the page. */
+.logo-spark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  margin: -4px 0 0 -4px; /* centre the dot on the badge's corner/edge line */
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 4;
+  opacity: 0;
+  background: radial-gradient(circle, #ffffff 0%, var(--emerald-400) 55%, rgba(159, 194, 42, 0) 72%);
+  box-shadow: 0 0 6px 2px rgba(255, 255, 255, 0.85), 0 0 14px 5px rgba(159, 194, 42, 0.8);
+  animation: uf-logo-spark 2.6s cubic-bezier(0.45, 0, 0.55, 1) 0.25s 1 both;
+}
+@keyframes uf-logo-spark {
+  0%   { top: 0;    left: 0;    opacity: 0; }
+  8%   { opacity: 1; }
+  25%  { top: 0;    left: 100%; opacity: 1; }
+  50%  { top: 100%; left: 100%; opacity: 1; }
+  75%  { top: 100%; left: 0;    opacity: 1; }
+  92%  { top: 0;    left: 0;    opacity: 1; }
+  100% { top: 0;    left: 0;    opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo-spark { display: none; animation: none; }
 }

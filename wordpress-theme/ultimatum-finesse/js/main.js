@@ -131,25 +131,82 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Contact form is front-end only for now; no backend is wired up yet.
+  // Contact form -> real submission via the theme's REST endpoint
+  // (uf/v1/contact, registered in functions.php). Endpoint URL + nonce are
+  // injected by wp_localize_script as UF_CONTACT.
   const form = document.querySelector("#contact-form");
   if (form) {
-    form.addEventListener("submit", (e) => {
+    const successEl = document.querySelector("#form-success");
+    const errorEl = document.querySelector("#form-error");
+
+    form.addEventListener("submit", async (e) => {
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
-      const originalLabel = submitBtn?.textContent;
-      if (submitBtn) {
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Sending…";
-      }
-      setTimeout(() => {
-        document.querySelector("#form-success")?.classList.add("show");
-        form.reset();
+      const originalLabel = submitBtn ? submitBtn.textContent : "";
+      const restore = () => {
         if (submitBtn) {
           submitBtn.disabled = false;
           submitBtn.textContent = originalLabel;
         }
-      }, 500);
+      };
+      const showError = (msg) => {
+        if (errorEl) {
+          errorEl.textContent = msg;
+          errorEl.classList.add("show");
+        }
+        restore();
+      };
+
+      if (errorEl) errorEl.classList.remove("show");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Sending…";
+      }
+
+      // Bail gracefully if the localized endpoint isn't present.
+      if (typeof UF_CONTACT === "undefined" || !UF_CONTACT.url) {
+        showError("Sorry — the form isn't available right now. Please email info@ultimatumfinesse.co.bw.");
+        return;
+      }
+
+      const val = (sel) => {
+        const el = form.querySelector(sel);
+        return el ? el.value : "";
+      };
+      const payload = {
+        name: val("#name"),
+        email: val("#email"),
+        phone: val("#phone"),
+        service: val("#service"),
+        message: val("#message"),
+        company_url: val('[name="company_url"]'), // honeypot — should stay empty
+      };
+
+      try {
+        const res = await fetch(UF_CONTACT.url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-WP-Nonce": UF_CONTACT.nonce,
+          },
+          body: JSON.stringify(payload),
+        });
+        let data = {};
+        try {
+          data = await res.json();
+        } catch (_) {
+          /* non-JSON response */
+        }
+        if (res.ok && data.ok !== false) {
+          if (successEl) successEl.classList.add("show");
+          form.reset();
+          restore();
+        } else {
+          showError((data && data.message) || "Sorry — your message couldn't be sent. Please try again or email info@ultimatumfinesse.co.bw.");
+        }
+      } catch (err) {
+        showError("Network error — please check your connection and try again, or email info@ultimatumfinesse.co.bw.");
+      }
     });
   }
 
